@@ -1,5 +1,7 @@
 #include <iostream>
 #include<algorithm>
+#define T 100
+#define N 100000
 using namespace std;
 int kthelement(int arr[],int n,int k)
 {
@@ -10,20 +12,26 @@ int kthelement(int arr[],int n,int k)
 }
 int main()
 {
-  int n,k;
+  int t;
+  cin>>t;
+  if(t>=1&&t<=T)
+  {
+  
+  for(int j=0;j<t;j++)
+  {
+      int n;
   cin>>n;
-  cin>>k;
-  int arr[n];a
+  int arr[n];
   for(int i=0;i<n;i++)
   {
     cin>>arr[i];
   }
-
-  cout<<kthelement(arr,n,k);
   
-
-
-
-
+      int k;
+      cin>>k;
+      cout<<kthelement(arr,n,k)<<"\n";
+  }
+  
+  }
   return 0;
 }
