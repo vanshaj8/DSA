@@ -1,0 +1,25 @@
+#include <iostream>
+#include<string.h>
+#include<bits/stdc++.h>
+using namespace std;
+void palindrome(char str[])
+{
+	int n=strlen(str)-1;
+	int i=0;
+	while(n>i)
+	{
+		if(str[i++]!=str[n--])
+		{
+			cout<<"Not a palindrome";
+			return ;
+		}
+	}
+	cout<<"Palindrome";
+}
+int  main()
+{
+
+  char str[] = "aaaaa";  
+  palindrome(str);
+  return 0;
+}
