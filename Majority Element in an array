@@ -1,0 +1,36 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+void findMajority(int arr[],int n)
+{
+  unordered_map<int,int> m;
+  for(int i=0;i<n;i++)
+  {
+    m[arr[i]]++;
+  }
+  int count=0;
+  for(auto i=m.begin();i!=m.end();i++)
+  {
+    if(i.second>(i+1).second)
+    {
+      
+    }
+  }
+  if(count==0)
+    {
+      cout<<"No majority found";
+    }
+
+}
+
+
+int main()
+{
+	
+   int arr[] = {2, 2, 2, 2, 5, 5, 2, 3, 3};  
+    int n = sizeof(arr) / sizeof(arr[0]);  
+      
+    // Function calling  
+    findMajority(arr, n); 
+	return 0;
+}
