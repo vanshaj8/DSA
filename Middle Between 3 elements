@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int soln(int A,int B,int C)
+{
+	if((A>B && B>C)|| (C>B &&B>A))
+	{
+		return B;
+	}
+	else if((B>A && A>C )|| (C>A&& A>B ))
+	{
+		return A;
+	}
+	else
+	{
+		return C;
+	}
+}
+int main()
+{
+	
+	int A,B,C;
+	cin>>A>>B>>C;
+	cout<<soln(A,B,C);
+	return 0;
+}
