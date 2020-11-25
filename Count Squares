@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int soln(int n)
+{
+	int count=0;
+	if(n==0||n==1)
+	{
+		cout<<"There is no such element";
+	}
+	else
+	{
+	for(int i=1;i*i<n;i++)
+	{
+		count=count+1;
+	}
+		cout<<count;
+	}
+	
+}
+int main()
+{
+	
+	int n;
+	cin>>n;
+	soln(n);
+	return 0;
+}
