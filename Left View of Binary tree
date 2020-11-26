@@ -1,0 +1,70 @@
+#include<iostream>
+#include<queue>
+#include<stack>
+#include<bits/stdc++.h>
+using namespace std;
+
+struct btnode
+{
+	int data;
+	btnode* left;
+	btnode* right;
+};
+
+btnode* create(int value)
+{
+	btnode* newnode=new btnode();
+	newnode->data=value;
+	newnode->left=NULL;
+	newnode->right=NULL;
+	
+	return newnode;
+}
+
+void leftview(btnode* root)
+{
+	if(root==NULL)
+	{
+		return;
+	}
+	
+	queue<btnode*>q;
+	q.push(root);
+	while(!q.empty())
+	{
+		int n=q.size();
+		for(int i=1;i<=n;i++)
+		{
+			btnode* temp=q.front();
+			q.pop();
+			if(i==1)
+			{
+				cout<<temp->data;
+			}
+			if(temp->left!=NULL)
+			{
+				q.push(temp->left);
+			}
+			if(temp->right!=NULL)
+			{
+				q.push(temp->right);
+			}
+		}
+	}
+}
+
+int main()
+{
+	btnode* root=create(1);
+	root->left=create(2);
+	root->right=create(3);
+	root->left->left=create(4);
+	root->left->right=create(5);
+	root->right->left=create(6);
+	root->right->right=create(7);
+	root->right->right->left=create(8);
+	leftview(root);
+	
+	return 0;
+	
+}
