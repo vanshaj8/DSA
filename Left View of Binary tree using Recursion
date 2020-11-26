@@ -1,0 +1,58 @@
+#include<iostream>
+#include<queue>
+#include<stack>
+#include<bits/stdc++.h>
+using namespace std;
+
+struct btnode
+{
+	int data;
+	btnode* left;
+	btnode* right;
+};
+
+btnode* create(int value)
+{
+	btnode* newnode=new btnode();
+	newnode->data=value;
+	newnode->left=NULL;
+	newnode->right=NULL;
+	
+	return newnode;
+}
+
+void leftview(btnode* root,int level,int* max_level)
+{
+	if(root==NULL)
+	{
+		return ;
+	}
+	if(*max_level<level)
+	{
+		cout<<root->data<<" ";
+		*max_level=level;
+	}
+	leftview(root->left,level+1,max_level);
+	leftview(root->right,level+1,max_level);
+	
+}
+void left(btnode* root)
+{
+	int max_level=0;
+	leftview(root,1,&max_level);
+}
+int main()
+{
+	btnode* root=create(1);
+	root->left=create(2);
+	root->right=create(3);
+	root->left->left=create(4);
+	root->left->right=create(5);
+	root->right->left=create(6);
+	root->right->right=create(7);
+	root->right->right->left=create(8);
+	left(root);
+	
+	return 0;
+	
+}
