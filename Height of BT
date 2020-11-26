@@ -1,0 +1,78 @@
+#include<iostream>
+#include<queue>
+#include<stack>
+#include<bits/stdc++.h>
+using namespace std;
+
+struct btnode
+{
+	int data;
+	btnode* left;
+	btnode* right;
+};
+
+btnode* create(int value)
+{
+	btnode* newnode=new btnode();
+	newnode->data=value;
+	newnode->left=NULL;
+	newnode->right=NULL;
+	
+	return newnode;
+}
+
+int heightbt(btnode* root)
+{
+	if(root==NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int ldepth=heightbt(root->left);
+		int rdepth=heightbt(root->right);
+		
+		if(ldepth>rdepth)
+		{
+			return ldepth+1;
+		}
+		else
+		{
+			return rdepth+1;
+		}
+	}
+}
+int main()
+{
+	btnode* root=create(1);
+	root->left=create(2);
+	root->right=create(3);
+	root->left->left=create(4);
+	root->left->right=create(5);
+	root->right->left=create(6);
+	root->right->right=create(7);
+	cout<< heightbt(root);
+
+	
+	
+	
+	
+	
+	return 0;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
