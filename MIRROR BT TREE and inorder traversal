@@ -1,0 +1,79 @@
+#include<iostream>
+#include<queue>
+#include<stack>
+#include<bits/stdc++.h>
+using namespace std;
+
+struct btnode
+{
+	int data;
+	btnode* left;
+	btnode* right;
+};
+
+btnode* create(int value)
+{
+	btnode* newnode=new btnode();
+	newnode->data=value;
+	newnode->left=NULL;
+	newnode->right=NULL;
+	
+	return newnode;
+}
+void inorder(btnode* root)
+{
+	if(root==NULL)
+	{
+		return ;
+	}
+	inorder(root->left);
+	cout<<root->data;
+	inorder(root->right);
+}
+void mirrorify(btnode* root,btnode** mirror)
+{
+	if(root==NULL)
+	{
+		mirror=NULL;
+		return;
+	}
+	*mirror=create(root->data);
+	mirrorify(root->left,&((*mirror)->right));
+	mirrorify(root->right,&((*mirror)->left));
+}
+int main()
+{
+	btnode* root=create(1);
+	root->left=create(2);
+	root->right=create(3);
+	root->left->left=create(4);
+	root->left->right=create(5);
+	root->right->left=create(6);
+	root->right->right=create(7);
+	inorder(root);
+	btnode* mirror;
+	mirrorify(root,&mirror);
+	cout<<"\n";
+	inorder(mirror);
+	
+	
+	
+	
+	return 0;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
