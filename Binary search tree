@@ -1,0 +1,86 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+struct bstnode
+{
+	int data;
+	bstnode* left;
+	bstnode* right;
+	
+};
+// Creating a new ndoe in the memory
+bstnode* getnewnode(int value)
+{
+	bstnode* newnode=new bstnode();
+	newnode->data=value;
+	newnode->left=newnode->right=NULL;
+	
+	
+	return newnode;
+}
+
+//Inserting an element in a new node
+bstnode* insert(bstnode* root,int data)
+{
+	if(root==NULL)
+	{
+		root=getnewnode(data);
+	}
+	else if(data<=root->data)
+	{
+		root->left=insert(root->left,data);
+	}
+	else
+	{
+		root->right=insert(root->right,data);
+	}
+	
+	return root;
+}
+
+bool search(bstnode* root,int value)
+{
+	if(root==NULL)
+	{
+		return false;
+	}
+	else if(root->data==value)
+	{
+		return true;
+	}
+	else if (value<=root->data)
+	{
+		return search(root->left,value);
+	}
+	else
+	{
+		return search(root->right,value);
+	}
+	
+}
+int main()
+{
+	bstnode* root=NULL;
+	root=insert(root,1);
+	root=insert(root,2);
+	root=insert(root,3);
+	root=insert(root,4);
+	root=insert(root,5);
+	root=insert(root,6);
+	root=insert(root,7);
+
+	int num=3;
+	if(search(root,num)==true)
+	{
+		cout<<"Found";
+	}
+	else
+	{
+		cout<<"Not found";
+	}
+	
+	
+	
+	return 0;
+}
