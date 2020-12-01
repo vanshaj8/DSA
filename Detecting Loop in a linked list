@@ -1,0 +1,15 @@
+bool checkcycle(node* head)
+{
+unordered_set<node*>s;
+while(head!=NULL)
+{
+   if(s.find(head)!=s.end()) // The line .end() means that the elemennt does not beolong in the unordered list  but we have ! sign which mean when an element is present
+   {
+   return true;
+   }
+   s.insert(head);
+   head=head->next;
+}
+return false;
+
+}
