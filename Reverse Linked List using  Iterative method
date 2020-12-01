@@ -1,0 +1,83 @@
+#include<iostream>
+using namespace std;
+struct node
+{
+	
+	int data;
+	node* next;
+	
+};
+node* head;
+node* tail;
+
+
+void addnode(int value)
+{
+	node* temp=new node();
+	temp->data=value;
+	temp->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=temp;
+		tail=temp;
+	}
+	else
+	{
+		temp->next=tail->next;
+		tail->next=temp;
+		tail=temp;
+	}
+}
+
+void reverse()
+{
+	node* current=head;
+	node* next=NULL;
+	node* prev=NULL;
+	
+	while(current!=NULL)
+	{
+		// Stores the next vlaue in the next variable pointer
+		next=current->next;
+		// Make sure that the current element points out to the last element
+		current->next=prev;
+		// Make sure the value of previous is of the last item
+		prev=current;
+		// Make the item goes to the next stage
+		current=next;
+
+	}
+	
+	head=prev;
+}
+void display()
+{
+	node* ptr;
+	ptr=head;
+	while(ptr!=NULL)
+	{
+		cout<<ptr->data<<" ";
+		ptr=ptr->next;
+	}
+}
+int main()
+{
+	
+	
+	addnode(1);
+	addnode(2);
+	addnode(3);
+	addnode(4);
+	addnode(5);
+	display();
+	cout<<"\n";
+	reverse();
+	display();
+
+	
+	
+	
+	
+	return 0;
+}
