@@ -1,0 +1,83 @@
+#include<iostream>
+using namespace std;
+struct node
+{
+	
+	int data;
+	node* next;
+	
+};
+node* head;
+node* tail;
+
+
+void addnode(int value)
+{
+	node* temp=new node();
+	temp->data=value;
+	temp->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=temp;
+		tail=temp;
+	}
+	else
+	{
+		temp->next=tail->next;
+		tail->next=temp;
+		tail=temp;
+	}
+}
+
+node* reverse(node *head,int k)
+{
+	node* current=head;
+	node* next=NULL;
+	node* prev=NULL;
+	int count =0;
+	while(current!=NULL && count<k)
+	{
+		next=current->next;
+		current->next=prev;
+		prev=current;
+		current=next;
+		count++;
+	}
+	if(next!=NULL)
+	{
+		head->next=reverse(next,k);
+	}
+	return prev;
+}
+void display()
+{
+	node* ptr;
+	ptr=head;
+	while(ptr!=NULL)
+	{
+		cout<<ptr->data<<" ";
+		ptr=ptr->next;
+	}
+}
+int main()
+{
+	
+	
+	addnode(1);
+	addnode(2);
+	addnode(3);
+	addnode(4);
+	addnode(5);
+	addnode(6);
+	display();
+	cout<<"\n";
+	reverse(head,3);
+	display();
+
+	
+	
+	
+	
+	return 0;
+}
