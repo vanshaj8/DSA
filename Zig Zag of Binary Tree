@@ -1,0 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node
+{
+	int data;
+	int hd;
+	Node *left;
+	Node *right;
+	
+	Node(int key)
+	{
+		data=key;
+		hd=INT_MAX;
+		left=right=NULL;
+	}
+};
+// Method for Spiral Order  Traversal
+
+void zigzag(Node* root)
+{
+  if(root==NULL)
+  {
+    return ;
+  }
+   // Decleration of stacks
+  stack<Node*> currentlevel;
+  stack<Node*> nextlevel;
+ 
+  currentlevel.push(root);
+  bool leftorright=true;
+  while(!currentlevel.empty())
+  {
+    Node* temp=currentlevel.top();
+    currentlevel.pop();
+   // IF temp not null
+    if(temp)
+    {
+      cout<<temp->data<<" ";
+      if(leftorright)
+      {
+        if(temp->left)
+        {
+          nextlevel.push(temp->left);
+        }
+        if(temp->right)
+        {
+          nextlevel.push(temp->right);
+        }
+      }
+      else
+      {
+        if(temp->right)
+        {
+         nextlevel.push(temp->right);
+        }
+        if(temp->left)
+        {
+          nextlevel.push(temp->left);
+        }
+      }
+
+      if(currentlevel.empty())
+      {
+        leftorright=!leftorright;
+        swap(currentlevel,nextlevel);
+      }
+    }
+  }
+
+}
+
+
+int main()
+{
+	Node *root = new Node(20); 
+    root->left = new Node(8); 
+    root->right = new Node(22); 
+    root->left->left = new Node(5); 
+    root->left->right = new Node(3); 
+    root->right->left = new Node(4); 
+    root->right->right = new Node(25); 
+    root->left->right->left = new Node(10); 
+    root->left->right->right = new Node(14); 
+    cout << "Bottom view of the given binary tree :\n";
+    zigzag(root);
+	
+	
+	
+	return 0;
+}
