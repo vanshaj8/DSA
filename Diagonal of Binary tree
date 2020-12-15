@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node
+{
+	int data;
+	int hd;
+	Node *left;
+	Node *right;
+	
+	Node(int key)
+	{
+		data=key;
+		hd=INT_MAX;
+		left=right=NULL;
+	}
+};
+// Method for finding Diagonal of Tree
+
+void Diagonal(Node* root)
+{
+  if(root==NULL)
+  {
+    return ;
+  }
+  queue<Node*> q;
+  Node *curr=root;
+  q.push(curr);
+  while(!q.empty())
+  {
+    Node* temp=q.front();
+    q.pop();
+    while(temp)
+    {
+      cout<<temp->data<<" ";
+      if(temp->left)
+      {
+        q.push(temp->left);
+      }
+      temp=temp->right;
+    }
+  }
+}
+
+
+int main()
+{
+	Node *root = new Node(20); 
+    root->left = new Node(8); 
+    root->right = new Node(22); 
+    root->left->left = new Node(5); 
+    root->left->right = new Node(3); 
+    root->right->left = new Node(4); 
+    root->right->right = new Node(25); 
+    root->left->right->left = new Node(10); 
+    root->left->right->right = new Node(14); 
+    cout << "Bottom view of the given binary tree :\n";
+    Diagonal(root);
+	
+	
+	
+	return 0;
+}
